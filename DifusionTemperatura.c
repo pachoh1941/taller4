@@ -35,12 +35,12 @@ int main(void)
     }
     
     /*Se inicializa la tempertura inicial en todos los puntos de la placa*/
-    inicializar(T_inicial, temp_inicial, temp_rectangulo);
+    inicializar(T_inicial, temp_inicial, temp_rectangulo, num_filas, num_filas);
     imprimir(T_inicial, num_filas, dt);
     return 0;
 }
 /*Funcion de incializacion de temperatura*/
-void inicializar(float **T_inicial, float temp_inicial, float temp_rectangulo)
+void inicializar(float **T_inicial, float temp_inicial, float temp_rectangulo, int rows, int cols)
 {
     int i,j;
     for(i=1;i<(rows-1);i++){
@@ -48,7 +48,7 @@ void inicializar(float **T_inicial, float temp_inicial, float temp_rectangulo)
             if((i<19 || i>29) && (j<39 || j>59)){
 	      T_inicial[i][j] = temp_inicial;
             }else{
-                T_inicial[i][j] = t_rectangulo;
+                T_inicial[i][j] = temp_rectangulo;
             }
         }
     }
@@ -56,13 +56,13 @@ void inicializar(float **T_inicial, float temp_inicial, float temp_rectangulo)
 /*Funcion de prueba. Imprime en la consola lo que ingresa por parametro*/
 void imprimir(float **array, int tamano_array, float constante)
 {
-  int i;
+  int i,j;
   printf("Valor de la constante: %f\n", constante);
   for(i=0;i<tamano_array;i++){
     for(j=0;j<tamano_array;j++){
-       printf(%f, array[i][j]);
+       printf("%f", array[i][j]);
     }
-    printf(\n);
+    printf("\n");
   }
 }
 /*****Caso 1*****/
@@ -164,7 +164,7 @@ void iteracion_period_CALOR(float **T_present, float **T_future, float r, int ro
         T_future[rows-1][j] = T_present[rows-1][j] + r*(T_present[rows-1][j+1]-2*T_present[rows-1][j]+T_present[rows-1][j-1]) + r*(T_present[0][j]-2*T_present[rows-1][j]+T_present[rows-2][j]);
     }
     /*Ultima columna*/
-    for(i=1;i<rows];i++){
+    for(i=1;i<rows;i++){
         T_future[i][cols-1] = T_present[i][cols-1] + r*(T_present[i][0]-2*T_present[i][cols-1]+T_present[i][cols-2]) + r*(T_present[0][cols-1] - 2*T_present[i][cols-1]+T_present[i-1][cols-1]);
     }
 }
@@ -195,7 +195,7 @@ void iteracion_fijas_CALOR(float **T_present, float **T_future, float r, int row
        T_future[i][cols-1] = 50;
    }
 }                                                                                                                
-                                 
+                               
                                                                                                                               
                                                                                                                               
                                                                                                                               
