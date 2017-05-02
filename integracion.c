@@ -25,12 +25,12 @@ int main(void)
   /*Inicializamos y = exp(-x)*/
   func(y,x,puntos);
   /*Se implementa el metodo de Monte Carlo*/
-  int puntos_debajo = 0;
+  double puntos_debajo = 0.0;
   double area_cuadrado = (x_max-x_min)*(y_max-y_min);
   for(i=0;i<puntos;i++){
     double x_sample = drand48();
     if(exp(-x_sample)< y[i]){
-      puntos_debajo += 1;
+      puntos_debajo += 1.0;
     }
   }
   double integral = area_cuadrado * (puntos_debajo/puntos);
