@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <math.h>
 /*Declaracion e funciones*/
 void func(double *f, double *x, int tamano);
 /*Main*/
