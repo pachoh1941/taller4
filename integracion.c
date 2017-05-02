@@ -34,7 +34,7 @@ int main(void)
     }
   }
   double integral = area_cuadrado * (puntos_debajo/puntos);
-  printf('El valor de la integral es: %f',integral);
+  printf("El valor de la integral es: %f", integral);
   return 0;
 }
 /*Funcion que calcula exp(-x)*/
