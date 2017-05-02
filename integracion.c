@@ -11,7 +11,7 @@ int main(void)
   double x_max = 1.0;
   double y_min = 0.0;
   double y_max = 1.0;
-  int puntos = 10000;
+  int puntos = 15000;
   double dx = (x_max-x_min)/puntos;
   double *x;
   x = malloc(puntos*sizeof(int));
