@@ -4,12 +4,13 @@
 /*Declaracion e funciones*/
 void func(double *f, double *x, int tamano);
 /*Main*/
-int main
+int main(void)
 {
   int i;
   double x_min = 0.0;
   double x_max = 1.0;
   double y_min = 0.0;
+  double y_max = 1.0;
   int puntos = 10000;
   double dx = (x_max-x_min)/puntos;
   double *x;
@@ -23,6 +24,18 @@ int main
   }
   /*Inicializamos y = exp(-x)*/
   func(y,x,puntos);
+  /*Se implementa el metodo de Monte Carlo*/
+  int puntos_debajo = 0;
+  double area_cuadrado = (x_max-x_min)*(y_max-y_min);
+  for(i=0;i<puntos;i++){
+    double x_sample = drand48();
+    if(exp(-x_sample)< y[i]){
+      puntos_debajo += 1;
+    }
+  }
+  double integral = area_cuadrado * (puntos_debajo/puntos);
+  printf('El valor de la integral es: %f',integral);
+  return 0;
 }
 /*Funcion que calcula exp(-x)*/
 void func(double *f, double *x, int tamano)
@@ -32,4 +45,5 @@ void func(double *f, double *x, int tamano)
     f[i] = exp(-x[i]);
     }
 }
+
 
